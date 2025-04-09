@@ -1,5 +1,11 @@
 # Delete and Restore .dat files
 
+## Download and set up path: 
+``` bash
+cd $HOME
+git clone https://github.com/ld32/deleteAndRestore.git
+export PATH=$HOME/deleteAndRestore:$PATH  
+
 ## Create testing data: 
 ```bash
 createTestData.sh testData/ 3 2 2 
