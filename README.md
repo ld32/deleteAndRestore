@@ -10,7 +10,7 @@ createTestData.sh
 ```
 ## Backup the data: 
 ```bash
-cp testData backupDir 
+cp -r testData backupDir 
 ```
 
 ## Build delete and restore commands: 
