@@ -1,5 +1,7 @@
 #!/bin/bash
 
-set -ex 
+#set -ex 
 
 cat delete.cmd | xargs -I {} -P 4 sh -c "{}"
+
+echo All done.

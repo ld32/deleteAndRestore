@@ -15,7 +15,7 @@ generate_commands() {
     file="$1"
     relative_path="${file#$originalSourceDir}"
     echo "rm \"$file\"" >> delete.cmd
-    echo "cp \"\$restoreDir$relative_path\" \"\$originalSourceDir$relative_path\"" >> restore.cmd
+    echo "cp \"\$backupDir$relative_path\" \"\$originalSourceDir$relative_path\"" >> restore.cmd
 }
 
 export -f generate_commands
@@ -35,4 +35,4 @@ echo delete.sh
 
 echo
 echo To restore, please run this command to restore files:
-echo restore.sh restoreDir originalSourceDir
+echo restore.sh backupDir originalSourceDir
