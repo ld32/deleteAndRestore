@@ -5,6 +5,7 @@
 cd $HOME
 git clone https://github.com/ld32/deleteAndRestore.git
 export PATH=$HOME/deleteAndRestore:$PATH  
+```
 
 ## Create testing data: 
 ```bash
