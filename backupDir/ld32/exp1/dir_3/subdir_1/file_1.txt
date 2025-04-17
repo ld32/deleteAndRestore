@@ -1,1 +1,0 @@
-This is test content for file 1 with extension .txt in subdirectory of directory 3
