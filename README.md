@@ -9,7 +9,10 @@ export PATH=$HOME/deleteAndRestore:$PATH
 
 ## Create testing data: 
 ```bash
-createTestData.sh testData/ 3 2 2 
+createTestData.sh exp1 2 2 2
+
+createTestData.sh exp2 2 2 2
+
 ```
 
 For help: 
@@ -39,7 +42,7 @@ buildCMDs.sh
 
 ## Actaully delete .dat files from folder testData
 ```bash
-delete.sh 
+delete.sh testData/ld32/exp1/delete.cmd 
 ```
 
 ## Check the difference between testData and backupDir
@@ -49,7 +52,7 @@ diff -r testData/ backupDir/
 
 ## Restore .dat files from backup folder
 ```bash
-restore.sh backupDir/ testData/
+restore.sh backupDir/ testData/ testData/ld32/exp1/restore.cmd
 ```
 
 ## Check the difference between testData and backupDir
@@ -58,4 +61,4 @@ diff -r testData/ backupDir/
 ```
 
 ## Notice:
-testData and backupDir are folder names. You can use any name for them.
+testData and backupDir are folder names. You can use any name for them when working on real data.

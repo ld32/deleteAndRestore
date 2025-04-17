@@ -11,8 +11,8 @@ originalSourceDir="$(realpath "$1")"
 generate_commands() {
     file="$1"; experimentPath="$2"
     relative_path="${file#$originalSourceDir}"
-    echo "rm \"$file\"" >> $experimentPath/delete.cmd
-    echo "cp \"\$backupDir$relative_path\" \"\$originalSourceDir$relative_path\"" >> $experimentPath/restore.cmd
+    echo "rm \\\"$file\\\"" >> $experimentPath/delete.cmd
+    echo "cp \\\"\$backupDir$relative_path\\\" \\\"\$originalSourceDir$relative_path\\\"" >> $experimentPath/restore.cmd
 }
 
 export -f generate_commands
