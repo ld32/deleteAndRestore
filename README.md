@@ -32,12 +32,12 @@ tree testData/
 
 ## Build delete and restore commands: 
 ```bash
-buildCMDs.sh testData/ 
+createCMDs.sh testData/ 
 ```
 
 For help: 
 ```bash
-buildCMDs.sh 
+createCMDs.sh 
 ```
 
 ## Actaully delete .dat files from folder testData

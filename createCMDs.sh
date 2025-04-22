@@ -9,10 +9,10 @@ originalSourceDir="$(realpath "$1")"
 [ ! -d "$originalSourceDir" ] && echo "Error: Directory '$originalSourceDir' does not exist." && exit 1
 
 generate_commands() {
-    file="$1"; experimentPath="$2"
+    file="${1// /\\ }"; experimentPath="${2// /\\ }"
     relative_path="${file#$originalSourceDir}"
-    echo "rm \\\"$file\\\"" >> $experimentPath/delete.cmd
-    echo "cp \\\"\$backupDir$relative_path\\\" \\\"\$originalSourceDir$relative_path\\\"" >> $experimentPath/restore.cmd
+    echo "rm $file" >> $experimentPath/delete.cmd
+    echo "cp \$backupDir$relative_path \$originalSourceDir$relative_path" >> $experimentPath/restore.cmd
 }
 
 export -f generate_commands
@@ -25,7 +25,7 @@ find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -
     # find the folder name two levels up from 'Raw Images' and set it as experimentPath
     experimentPath="$(dirname "$(dirname "$folder")")"
     if `grep -qxF "$experimentPath" experimentPaths.txt`; then 
-        echo "Experiment name already exists: $experimentPath"
+        echo "Experiment directory is already processed: $experimentPath"
         continue
     else 
         echo "$experimentPath" >> "experimentPaths.txt"

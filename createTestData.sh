@@ -84,4 +84,4 @@ for (( dirIndex=1; dirIndex<=numDirs; dirIndex++ )); do
     done
 done
 
-echo "Test data generation complete."
+echo "Test data generation complete. It is in $baseDir"
