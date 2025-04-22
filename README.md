@@ -42,7 +42,7 @@ createCMDs.sh
 
 ## Actaully delete .dat files from folder testData
 ```bash
-delete.sh testData/ld32/exp1/delete.cmd 
+delete.sh testData/ld32/exp1/delete.cmd 2>&1 | tee -a delete.log
 ```
 
 ## Check the difference between testData and backupDir
@@ -52,7 +52,7 @@ diff -r testData/ backupDir/
 
 ## Restore .dat files from backup folder
 ```bash
-restore.sh backupDir/ testData/ testData/ld32/exp1/restore.cmd
+restore.sh backupDir/ testData/ testData/ld32/exp1/restore.cmd  2>&1 | tee -a restore.log
 ```
 
 ## Check the difference between testData and backupDir

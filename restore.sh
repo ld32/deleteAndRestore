@@ -10,13 +10,13 @@ usage(){
 [ -z "$2" ] && usage 
 [ -z "$3" ] && usage
 
-export backupDir="$1"
+export backupDir="${1%/}"
 if [ ! -d "$backupDir" ]; then
     echo "Error: Backup directory '$backupDir' does not exist."
     usage
     exit 1
 fi
-export originalSourceDir="$2"
+export originalSourceDir="${2%/}"
 if [ ! -d "$originalSourceDir" ]; then
     echo "Error: Original source directory '$originalSourceDir' does not exist."
     usage
@@ -44,6 +44,6 @@ read -p "" confirm </dev/tty
 
 [[ "$confirm" == y ]] || { echo -e "Aborted"; exit 0; } 
 
-cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "{}"
+cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "date; echo {}; {};" 
 
 echo All done

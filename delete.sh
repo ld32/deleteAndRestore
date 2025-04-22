@@ -22,6 +22,6 @@ read -p "" confirm </dev/tty
 
 [[ "$confirm" == y ]] || { echo -e "Aborted"; exit 0; } 
 
-cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "{}" 
+cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "date; echo {}; {};" 
 
 echo All done
