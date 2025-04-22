@@ -31,8 +31,9 @@ find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -
         echo "$experimentPath" >> "experimentPaths.txt"
         > $experimentPath/delete.cmd
         > $experimentPath/restore.cmd
-        find "$experimentPath/*/Raw\ Images" -type f -name '*.dat' -print0 | xargs -0 -I{} bash -c 'generate_commands "$@"' _ "{}" "$experimentPath"
-
+        for dir in "$experimentPath"/*/Raw\ Images; do
+           find "$dir" -type f -name '*.dat' -print0 | xargs -0 -I{} bash -c 'generate_commands "$@"' _ "{}" "$experimentPath"
+        done 
         echo "Experiment path: $experimentPath" > "$experimentPath/readme.txt"
         echo >> "$experimentPath/readme.txt"
 
