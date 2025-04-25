@@ -10,6 +10,10 @@ usage(){
 [ -z "$2" ] && usage 
 [ -z "$3" ] && usage
 
+quiet=$4 
+
+date
+
 export backupDir="${1%/}"
 if [ ! -d "$backupDir" ]; then
     echo "Error: Backup directory '$backupDir' does not exist."
@@ -30,20 +34,24 @@ if [ ! -f "$cmdFile" ]; then
     exit 1
 fi
 
+if [ -z "$quiet" ]; then 
 
-echo -e "Please give the number of rows you want to check: "
-read -p "" x </dev/tty
+    echo -e "Please give the number of rows you want to check: "
+    read -p "" x </dev/tty
 
-[[ "$x" =~ ^[0-9]+$ ]] || { echo -e "Error: should be a number"; exit 1; }
-         
-head -n "$x" "$cmdFile"
+    [[ "$x" =~ ^[0-9]+$ ]] || { echo -e "Error: should be a number"; exit 1; }
+            
+    head -n "$x" "$cmdFile"
 
-echo -e "Continue to restore .dat files? (y/n): "
+    echo -e "Continue to restore .dat files? (y/n): "
 
-read -p "" confirm </dev/tty
+    read -p "" confirm </dev/tty
 
-[[ "$confirm" == y ]] || { echo -e "Aborted"; exit 0; } 
+    [[ "$confirm" == y ]] || { echo -e "Aborted"; exit 0; } 
+fi 
 
-cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "date; echo {}; {};" 
+cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};" 
 
 echo All done
+
+date

@@ -2,6 +2,8 @@
 
 #set -ex 
 
+date
+
 cmdFile="$1"
 
 if [ ! -f "$cmdFile" ]; then
@@ -22,6 +24,7 @@ read -p "" confirm </dev/tty
 
 [[ "$confirm" == y ]] || { echo -e "Aborted"; exit 0; } 
 
-cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "date; echo {}; {};" 
+cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};" 
 
 echo All done
+date

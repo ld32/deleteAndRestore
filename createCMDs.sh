@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #set -xe
+date 
 
 [ "$#" -ne 1 ] && echo "Usage: $0 <originalSourceDir>" && exit 1
 
@@ -34,6 +35,9 @@ find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -
         for dir in "$experimentPath"/*/Raw\ Images; do
            find "$dir" -type f -name '*.dat' -print0 | xargs -0 -I{} bash -c 'generate_commands "$@"' _ "{}" "$experimentPath"
         done 
+        
+        split -l 1000 -d --additional-suffix=.cmd "$experimentPath/restore.cmd" "$experimentPath/restore_"    
+
         echo "Experiment path: $experimentPath" > "$experimentPath/readme.txt"
         echo >> "$experimentPath/readme.txt"
 
@@ -60,3 +64,4 @@ find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -
 done 
 
 echo all done
+date 
