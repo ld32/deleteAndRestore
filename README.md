@@ -40,9 +40,14 @@ For help:
 createCMDs.sh 
 ```
 
-## Actaully delete .dat files from folder testData
+## Actaully delete .dat files from exp1 folder testData
 ```bash
 delete.sh testData/ld32/exp1/delete.cmd 2>&1 | tee -a delete.log
+```
+
+## Actaully delete all .dat files from testData
+```bash
+deleteAll.sh testData/ 2>&1 | tee -a delete.log
 ```
 
 ## Check the difference between testData and backupDir
