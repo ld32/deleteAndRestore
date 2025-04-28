@@ -55,6 +55,16 @@ diff -r testData/ backupDir/
 restore.sh backupDir/ testData/ testData/ld32/exp1/restore.cmd  2>&1 | tee -a restore.log
 ```
 
+## Restore all .dat files from backup folder using a single command
+```bash
+restoreAll.sh backupDir/ testData/ 2>&1 | tee -a restore.log
+```
+
+## Restore all .dat files from backup folder using a single command using sbatch
+```bash
+restoreAll.sh backupDir/ testData/ sbatch 2>&1 | tee -a restore.log
+```
+
 ## Check the difference between testData and backupDir
 ```bash
 diff -r testData/ backupDir/ 

@@ -29,6 +29,11 @@ fi
 
 cmdFile="$3"
 
+if [ -f "$cmdFile.done" ]; then
+    echo "Done earlier: $cmdFile."
+    exit 1
+fi
+
 if [ ! -f "$cmdFile" ]; then
     echo "Error: Command file '$cmdFile' does not exist."
     exit 1
@@ -51,6 +56,8 @@ if [ -z "$quiet" ]; then
 fi 
 
 cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};" 
+
+touch $cmdFile.done 
 
 echo All done
 
