@@ -27,8 +27,13 @@ fi
 
 find "$originalSourceDir" -type f -name 'restore_*.cmd' -print0 | while IFS= read -r -d '' cmdFile; do
     echo "Processing $cmdFile"
-    #cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};"
-    sbatch -p short --mem 2G -t 10:0:0 --wrap="restore.sh $backupDir $originalSourceDir $cmdFile quiet"
+    if [ -f $cmdFile.done ]; then
+        cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};"
+        touch $cmdFile.done 
+    else 
+        echo Done earlier: $cmdFile
+    fi 
+    #sbatch -p short --mem 2G -t 10:0:0 --wrap="restore.sh $backupDir $originalSourceDir $cmdFile quiet"
 done 
 
 echo All done
