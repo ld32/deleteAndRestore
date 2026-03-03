@@ -85,8 +85,8 @@ diff -r testData/ backupDir/
 
 I tested the scripts with 3T real data. 
 The 3T data has 3035 .dat files to delete. 
-Creating the .cmd file costed a few seconds; deleting the data spent less than 1 minutes; and restore the data costed 1 hour and 44 minutes. 
-Because is slower to restore data, I modified the code to also create multiple restoreX.cmd files, each of them resotre 1000 .dat files. When restoring data, we use them to restore .dat files in batches using sbatch command, each job restore 1000 files:
+Creating the .cmd file costed a few seconds; deleting the data spent less than 1 minutes; and restoring the data costed 1 hour and 44 minutes. 
+Because it is slow to restore data, I modified the code to also split the commands into subset into files, each of them contains 1000 .dat files. When restoring data, we can use these subset files to restore .dat files in batches using sbatch command, each job restore 1000 files:
 ```bash
 restoreAll.sh backupDir/ testData/ sbatch 2>&1 | tee -a restore.log
 ```
