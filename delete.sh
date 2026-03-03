@@ -4,7 +4,7 @@
 
 date
 
-cmdFile="$1"
+cmdFile="$1"    
 
 quiet="$2"
 
@@ -31,4 +31,5 @@ fi
 cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};" 
 
 echo All done
+
 date

@@ -26,7 +26,7 @@ find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -
     # find the folder name two levels up from 'Raw Images' and set it as experimentPath
     experimentPath="$(dirname "$(dirname "$folder")")"
     if `grep -qxF "$experimentPath" experimentPaths.txt`; then 
-        #echo "Experiment directory is already processed: $experimentPath"
+        echo "Experiment directory is already processed: $experimentPath"
         continue
     else 
         echo "$experimentPath" >> "experimentPaths.txt"

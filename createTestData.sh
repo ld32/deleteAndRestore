@@ -17,7 +17,7 @@ if [ "$#" -ne 4 ]; then
     exit 1
 fi
 
-baseDir=testData/$USER/"$1"
+baseDir=testData/"$1"
 numDirs="$2"
 numFilesPerDir="$3"
 numSubDirs="$4"
