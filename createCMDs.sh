@@ -3,7 +3,7 @@
 #set -xe
 date 
 
-[ "$#" -ne 1 ] && echo "Usage: $0 <originalSourceDir>" && exit 1
+[ "$#" -ne 1 ] && echo "Usage: $(basename "$0") <originalSourceDir>" && exit 1
 
 originalSourceDir="$(realpath "$1")"
 

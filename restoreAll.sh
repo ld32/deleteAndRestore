@@ -3,7 +3,7 @@
 #set -ex 
 
 usage(){
-    echo "$0 <backupDir> <originalSourceDir> [sbatch]" && exit 1
+    echo "$(basename "$0") <backupDir> <originalSourceDir> [sbatch]" && exit 1
 }
 
 [ -z "$1" ] && usage 

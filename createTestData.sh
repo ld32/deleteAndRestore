@@ -5,7 +5,7 @@ set -u
 #set -x 
 
 usage() {
-    echo "Usage: $0 <baseDir> <numDirs> <numFilesPerDir> <numSubDirs>"
+    echo "Usage: $(basename "$0") <baseDir> <numDirs> <numFilesPerDir> <numSubDirs>"
     echo "  <baseDir>        - The base directory where test data will be created."
     echo "  <numDirs>        - Number of top-level directories to create."
     echo "  <numFilesPerDir> - Number of files to create in each directory."

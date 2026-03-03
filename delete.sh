@@ -4,6 +4,12 @@
 
 date
 
+usage(){
+    echo "$(basename "$0") <cmdFile> [quiet]" && exit 1
+}
+
+[ -z "$1" ] && usage
+
 cmdFile="$1"    
 
 quiet="$2"
@@ -14,7 +20,7 @@ if [ ! -f "$cmdFile" ]; then
 fi
 
 if [ -z "$quiet" ]; then 
-    echo -e "Please give the number of rows you want to check: "
+    echo -e "Please give the number commands to review: "
     read -p "" x </dev/tty
 
     [[ "$x" =~ ^[0-9]+$ ]] || { echo -e "Error: should be a number"; exit 1; }
