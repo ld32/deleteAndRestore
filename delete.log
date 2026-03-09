@@ -1,0 +1,12 @@
+Mon Mar  9 09:42:19 AM EDT 2026
+Please give the number commands to review: 
+rm /home/ld32/opt/deleteAndRestore/testData/exp1/subdir\ 1/Raw\ Images/file_1.dat
+rm /home/ld32/opt/deleteAndRestore/testData/exp1/subdir\ 1/Raw\ Images/file_2.dat
+Continue to delete .dat files? (y/n): 
+rm /home/ld32/opt/deleteAndRestore/testData/exp1/subdir 1/Raw Images/file_1.dat
+rm /home/ld32/opt/deleteAndRestore/testData/exp1/subdir 1/Raw Images/file_2.dat
+rm /home/ld32/opt/deleteAndRestore/testData/exp1/subdir 1/Raw Images/file_3.dat
+rm /home/ld32/opt/deleteAndRestore/testData/exp1/subdir 1/Raw Images/file_4.dat
+rm /home/ld32/opt/deleteAndRestore/testData/exp1/subdir 1/Raw Images/file_5.dat
+All done
+Mon Mar  9 09:42:26 AM EDT 2026

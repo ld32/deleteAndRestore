@@ -2,7 +2,7 @@
 
 set -eu 
 
-set -x
+#set -x
 
 date 
 
@@ -61,7 +61,7 @@ find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -
         echo >> "$experimentPath/readme.txt"
         
         echo "To restore files, run: " >> "$experimentPath/readme.txt"
-        echo "bash $experimentPath/restore.sh $backupDir $originalSourceDir" >> "$experimentPath/readme.txt"
+        echo "bash $experimentPath/restore.sh backupDir $originalSourceDir" >> "$experimentPath/readme.txt"
     fi
 
     

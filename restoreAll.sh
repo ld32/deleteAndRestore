@@ -9,7 +9,7 @@ usage(){
 
 [ "$#" -lt 2 ] && usage
 
-[  "$#" -eq 3 ] && sbatch="$3" ] && usage
+[  "$#" -eq 3 ] && sbatch="$3" ] || sbatch=''
 
 date
 
