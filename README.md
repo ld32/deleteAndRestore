@@ -20,13 +20,58 @@ export PATH="$HOME/deleteAndRestore:$PATH"
 ## Create testing data: 
 ```bash
 
-createTestData.sh exp1 2 2 2
+createTestData.sh exp1 1 1
 
-createTestData.sh exp2 2 2 2
+createTestData.sh exp2 1 1
 
 ```
 
-For help: 
+## take a look at the folder structure
+```bash
+
+# We only delete .dat files under Raw Images, and keep all other files
+tree testData
+$ tree testData/ 
+testData/
+├── exp1
+│   └── subdir 1
+│       ├── file_1.dat
+│       ├── file_1.log
+│       ├── file_1.txt
+│       ├── Raw Images
+│       │   ├── file_1.dat
+│       │   ├── file_1.log
+│       │   ├── file_1.txt
+│       │   ├── file_2.dat
+│       │   ├── file_3.dat
+│       │   ├── file_4.dat
+│       │   └── file_5.dat
+│       └── subsubdir_1
+│           ├── file_1.dat
+│           ├── file_1.log
+│           └── file_1.txt
+└── exp2
+    └── subdir 1
+        ├── file_1.dat
+        ├── file_1.log
+        ├── file_1.txt
+        ├── Raw Images
+        │   ├── file_1.dat
+        │   ├── file_1.log
+        │   ├── file_1.txt
+        │   ├── file_2.dat
+        │   ├── file_3.dat
+        │   ├── file_4.dat
+        │   └── file_5.dat
+        └── subsubdir_1
+            ├── file_1.dat
+            ├── file_1.log
+            └── file_1.txt
+
+8 directories, 26 files
+```
+
+## For help: 
 ```bash
 createTestData.sh 
 ```

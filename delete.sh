@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#set -ex 
+set -eu
+#set -x 
 
 date
 
@@ -8,11 +9,11 @@ usage(){
     echo "$(basename "$0") <cmdFile> [quiet]" && exit 1
 }
 
-[ -z "$1" ] && usage
+[ "$#" -lt 1 ] && usage
 
 cmdFile="$1"    
 
-quiet="$2"
+[ "$#" -eq 1 ] && quiet="" || quiet="$2"
 
 if [ ! -f "$cmdFile" ]; then
     echo "Error: Command file '$cmdFile' does not exist."

@@ -1,12 +1,13 @@
 #!/bin/bash
 
-#set -ex 
+set -eu 
+#set -x 
 
 usage(){
     echo "$(basename "$0") <originalSourceDir>" && exit 1
 }
 
-[ -z "$1" ] && usage 
+[ "$#" -lt 1 ] && usage 
 
 date
 

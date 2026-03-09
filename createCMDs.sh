@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#set -xe
+set -eu 
+
+set -x
+
 date 
 
 [ "$#" -ne 1 ] && echo "Usage: $(basename "$0") <originalSourceDir>" && exit 1
@@ -17,6 +20,7 @@ generate_commands() {
 }
 
 export -f generate_commands
+
 export originalSourceDir
 
 # Find all folders named 'Raw Images' in "$originalSourceDir" and save them into file folders.txt

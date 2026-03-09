@@ -1,14 +1,15 @@
 #!/bin/bash
 
-#set -ex 
+set -eu
+set -x 
 
 usage(){
     echo "$(basename "$0") <backupDir> <originalSourceDir> [sbatch]" && exit 1
 }
 
-[ -z "$1" ] && usage 
-[ -z "$2" ] && usage
-sbatch=$3
+[ "$#" -lt 2 ] && usage
+
+[  "$#" -eq 3 ] && sbatch="$3" ] && usage
 
 date
 
