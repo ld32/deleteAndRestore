@@ -24,10 +24,9 @@ find "$originalSourceDir" -type f -name 'delete.cmd' -print0 | while IFS= read -
     if [ -f $cmdFile.done ]; then
         echo Done earlier: $cmdFile
     else 
-        delete.sh $cmdFile quiet 
-        touch $cmdFile.done
-    fi
-done 
+        delete.sh $cmdFile quiet   
+    fi  
+done
 
 echo All done
 date

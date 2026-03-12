@@ -13,8 +13,9 @@ originalSourceDir="$(realpath "$1")"
 [ ! -d "$originalSourceDir" ] && echo "Error: Directory '$originalSourceDir' does not exist." && exit 1
 
 generate_commands() {
+    #set -x 
     file="${1// /\\ }"; experimentPath="${2// /\\ }"
-    relative_path="${file#$originalSourceDir}"
+    relative_path="${file#$originalSourceDir/}"
     echo "rm $file" >> $experimentPath/delete.cmd
     echo "rsync -a \$backupDir$relative_path \$originalSourceDir$relative_path" >> $experimentPath/restore.cmd
 }
@@ -24,20 +25,31 @@ export -f generate_commands
 export originalSourceDir
 
 # Find all folders named 'Raw Images' in "$originalSourceDir" and save them into file folders.txt
-> experimentPaths.txt
+[ -f experimentPaths.txt ] && rm experimentPaths.txt
 find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -r -d '' folder; do
     echo "Processing folder: $folder"
     # find the folder name two levels up from 'Raw Images' and set it as experimentPath
     experimentPath="$(dirname "$(dirname "$folder")")"
-    if `grep -qxF "$experimentPath" experimentPaths.txt`; then 
+    if `[ -f experimentPaths.txt ] && grep -qxF "$experimentPath" experimentPaths.txt`; then 
         #echo "Experiment directory is already processed: $experimentPath"
         continue
     else 
         echo "$experimentPath" >> "experimentPaths.txt"
-        > $experimentPath/delete.cmd
-        > $experimentPath/restore.cmd
+        [ -f "$experimentPath/delete.cmd" ] && rm "$experimentPath/delete.cmd"
+        [ -f "$experimentPath/restore.cmd" ] && rm "$experimentPath/restore.cmd"
+        [ -f "$experimentPath/delete.cmd.done" ] && rm "$experimentPath/delete.cmd.done"
+        [ -f "$experimentPath/restore.cmd.done" ] && rm "$experimentPath/restore.cmd.done"
+        [ -f "$experimentPath"/restore_*.cmd ] && rm "$experimentPath"/restore_*.cmd
+        [ -f "$experimentPath"/restore_*.cmd.done ] && rm "$experimentPath"/restore_*.cmd.done
+
+        if [ "$originalSourceDir" != *testData* ]; then
+         
+             echo "Before creating commands, the structure of the experiment directory is: "
+            tree "$experimentPath"
+        fi
+
         for dir in "$experimentPath"/*/Raw\ Images; do
-           find "$dir" -type f -name '*.dat' -print0 | xargs -0 -I{} bash -c 'generate_commands "$@"' _ "{}" "$experimentPath"
+           find "$dir" -type f -name '*.dat' -print0 | xargs -0 -I{} bash -c 'generate_commands "$1" "$2"'  _ "{}" "$experimentPath"
         done 
         
         split -l 1000 -d --additional-suffix=.cmd "$experimentPath/restore.cmd" "$experimentPath/restore_"    
@@ -45,6 +57,11 @@ find "$originalSourceDir" -type d -name 'Raw Images' -print0 | while IFS= read -
         echo "Experiment path: $experimentPath" > "$experimentPath/readme.txt"
         echo >> "$experimentPath/readme.txt"
 
+       if [ "$originalSourceDir" != *testData* ]; then
+         
+            echo "After creating commands, the structure of the experiment directory is: "
+            tree "$experimentPath"
+        fi 
         echo "This folder contains the commands to delete and restore files." >> "$experimentPath/readme.txt"
         echo >> "$experimentPath/readme.txt"
        

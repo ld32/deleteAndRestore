@@ -26,19 +26,7 @@ fileExtensions=("txt" "dat" "log")
 
 # first leve directories
 for (( dirIndex=1; dirIndex<=numDirs; dirIndex++ )); do
-    # dirPath="$baseDir/dir_$dirIndex"
-    # mkdir -p "$dirPath"
-    # echo "Creating directory: $dirPath"
-
-    # for (( fileIndex=1; fileIndex<=numFilesPerDir; fileIndex++ )); do
-    #     for ext in "${fileExtensions[@]}"; do
-    #         filePath="$dirPath/file_${fileIndex}.${ext}"
-    #         echo "This is test content for file $fileIndex with extension .${ext} in directory $dirIndex" > "$filePath"
-    #         echo "Created file: $filePath"
-    #     done
-    # done
-
-    dirPath="$baseDir/subdir $dirIndex"
+    dirPath="$baseDir/subdir$dirIndex"
     mkdir -p "$dirPath"
     echo "Creating directory: $dirPath"
 
@@ -50,8 +38,6 @@ for (( dirIndex=1; dirIndex<=numDirs; dirIndex++ )); do
         done
     done
 
-    # second level directories
-    # Create a 'Raw Images' directory in each subdirectory
     rawImagesPath="$dirPath/Raw Images"
     mkdir -p "$rawImagesPath"
     
@@ -81,21 +67,6 @@ for (( dirIndex=1; dirIndex<=numDirs; dirIndex++ )); do
                 echo "Created file: $filePath"
             done
         done
-
-        # third level directories
-        # for (( subDirIndex=1; subDirIndex<=numSubDirs; subDirIndex++ )); do
-        #     subDirPath="$dirPath/subdir_$subDirIndex"
-        #     mkdir -p "$subDirPath"
-        #     echo "Creating subdirectory: $subDirPath"
-
-        #     for (( fileIndex=1; fileIndex<=numFilesPerDir; fileIndex++ )); do
-        #         for ext in "${fileExtensions[@]}"; do
-        #             filePath="$subDirPath/file_${fileIndex}.${ext}"
-        #             echo "This is test content for file $fileIndex with extension .${ext} in subdirectory of directory $dirIndex" > "$filePath"
-        #             echo "Created file: $filePath"
-        #         done
-        #     done
-        # done
     done
 done
 

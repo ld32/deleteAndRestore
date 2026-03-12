@@ -131,3 +131,18 @@ Line 44: echo All done
 All done
 Line 45: date
 Mon Mar  9 09:56:57 AM EDT 2026
+Mon Mar  9 10:02:29 AM EDT 2026
+Processing testData/exp1/restore_00.cmd
+rsync -a backupDir/exp1/subdir 1/Raw Images/file_1.dat testData/exp1/subdir 1/Raw Images/file_1.dat
+rsync -a backupDir/exp1/subdir 1/Raw Images/file_2.dat testData/exp1/subdir 1/Raw Images/file_2.dat
+rsync -a backupDir/exp1/subdir 1/Raw Images/file_3.dat testData/exp1/subdir 1/Raw Images/file_3.dat
+rsync -a backupDir/exp1/subdir 1/Raw Images/file_4.dat testData/exp1/subdir 1/Raw Images/file_4.dat
+rsync -a backupDir/exp1/subdir 1/Raw Images/file_5.dat testData/exp1/subdir 1/Raw Images/file_5.dat
+Processing testData/exp2/restore_00.cmd
+rsync -a backupDir/exp2/subdir 1/Raw Images/file_1.dat testData/exp2/subdir 1/Raw Images/file_1.dat
+rsync -a backupDir/exp2/subdir 1/Raw Images/file_2.dat testData/exp2/subdir 1/Raw Images/file_2.dat
+rsync -a backupDir/exp2/subdir 1/Raw Images/file_3.dat testData/exp2/subdir 1/Raw Images/file_3.dat
+rsync -a backupDir/exp2/subdir 1/Raw Images/file_4.dat testData/exp2/subdir 1/Raw Images/file_4.dat
+rsync -a backupDir/exp2/subdir 1/Raw Images/file_5.dat testData/exp2/subdir 1/Raw Images/file_5.dat
+All done
+Mon Mar  9 10:02:30 AM EDT 2026

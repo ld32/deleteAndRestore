@@ -2,7 +2,7 @@
 
 set -eu
 
-set -x 
+#set -x 
 
 usage(){
     echo "$(basename "$0") <backupDir> <originalSourceDir> <pathToRestore.cmd>" && exit 1

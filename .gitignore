@@ -2,3 +2,5 @@
 experimentPaths.txt
 testData/
 backupDir/
+delete.log
+restore.log

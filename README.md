@@ -31,7 +31,7 @@ $ createTestData.sh exp2 1 1
 $ tree testData/ 
 testData/
 ├── exp1
-│   └── subdir 1
+│   └── subdir1
 │       ├── file_1.dat
 │       ├── file_1.log
 │       ├── file_1.txt
@@ -48,7 +48,7 @@ testData/
 │           ├── file_1.log
 │           └── file_1.txt
 └── exp2
-    └── subdir 1
+    └── subdir1
         ├── file_1.dat
         ├── file_1.log
         ├── file_1.txt
@@ -83,7 +83,7 @@ $ cp -r testData/ backupDir/
 $ createCMDs.sh testData/ 
 ```
 
-For help: 
+For help:
 ```bash
 $ createCMDs.sh 
 ```
@@ -107,21 +107,21 @@ Only in testData/exp1: readme.txt
 Only in testData/exp1: restore_00.cmd
 Only in testData/exp1: restore.cmd
 Only in testData/exp1: restore.cmd.done
-Only in backupDir/exp1/subdir 1/Raw Images: file_1.dat
-Only in backupDir/exp1/subdir 1/Raw Images: file_2.dat
-Only in backupDir/exp1/subdir 1/Raw Images: file_3.dat
-Only in backupDir/exp1/subdir 1/Raw Images: file_4.dat
-Only in backupDir/exp1/subdir 1/Raw Images: file_5.dat
+Only in backupDir/exp1/subdir1/Raw Images: file_1.dat
+Only in backupDir/exp1/subdir1/Raw Images: file_2.dat
+Only in backupDir/exp1/subdir1/Raw Images: file_3.dat
+Only in backupDir/exp1/subdir1/Raw Images: file_4.dat
+Only in backupDir/exp1/subdir1/Raw Images: file_5.dat
 Only in testData/exp2: delete.cmd
 Only in testData/exp2: delete.cmd.done
 Only in testData/exp2: readme.txt
 Only in testData/exp2: restore_00.cmd
 Only in testData/exp2: restore.cmd
-Only in backupDir/exp2/subdir 1/Raw Images: file_1.dat
-Only in backupDir/exp2/subdir 1/Raw Images: file_2.dat
-Only in backupDir/exp2/subdir 1/Raw Images: file_3.dat
-Only in backupDir/exp2/subdir 1/Raw Images: file_4.dat
-Only in backupDir/exp2/subdir 1/Raw Images: file_5.dat 
+Only in backupDir/exp2/subdir1/Raw Images: file_1.dat
+Only in backupDir/exp2/subdir1/Raw Images: file_2.dat
+Only in backupDir/exp2/subdir1/Raw Images: file_3.dat
+Only in backupDir/exp2/subdir1/Raw Images: file_4.dat
+Only in backupDir/exp2/subdir1/Raw Images: file_5.dat 
 ```
 
 ## Restore .dat files from backup folder

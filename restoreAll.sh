@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -eu
-set -x 
+#set -x 
 
 usage(){
     echo "$(basename "$0") <backupDir> <originalSourceDir> [sbatch]" && exit 1
