@@ -17,7 +17,7 @@ generate_commands() {
     file="${1// /\\ }"; experimentPath="${2// /\\ }"
     relative_path="${file#$originalSourceDir/}"
     echo "rm $file" >> $experimentPath/delete.cmd
-    echo "rsync -a \$backupDir$relative_path \$originalSourceDir$relative_path" >> $experimentPath/restore.cmd
+    echo "rsync -a \$backupDir/$relative_path \$originalSourceDir/$relative_path" >> $experimentPath/restore.cmd
 }
 
 export -f generate_commands
