@@ -37,7 +37,7 @@ fi
 
 cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};" 
 
-[ -f "$cmdFile.done" ] && rm "$cmdFile.done"
+touch "$cmdFile.done"
 
 restoreCmdFile="${cmdFile/delete.cmd/restore}"
 #if ls "$restoreCmdFile"_*.cmd.done 2>/dev/null; then
