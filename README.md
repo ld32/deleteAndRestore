@@ -137,11 +137,13 @@ $ restoreAll.sh backupDir/ testData/ 2>&1 | tee -a restore.log
 ```bash
 $ diff -r testData/ backupDir/ 
 Only in testData/exp1: delete.cmd
+Only in testData/exp1: delete.cmd.done
 Only in testData/exp1: readme.txt
 Only in testData/exp1: restore_00.cmd
 Only in testData/exp1: restore_00.cmd.done
 Only in testData/exp1: restore.cmd
 Only in testData/exp2: delete.cmd
+Only in testData/exp2: delete.cmd.done
 Only in testData/exp2: readme.txt
 Only in testData/exp2: restore_00.cmd
 Only in testData/exp2: restore_00.cmd.done
