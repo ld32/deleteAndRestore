@@ -43,7 +43,7 @@ restoreCmdFile="${cmdFile/delete.cmd/restore}"
 if ls "$restoreCmdFile"_*.cmd.done; then
     rm "$restoreCmdFile"_*.cmd.done
 fi
-[ -f "$restoreCmdFile"_*.cmd.done ] && rm "$restoreCmdFile"_*.cmd.done
+ls "$restoreCmdFile"_*.cmd.done 2>/dev/null && rm "$restoreCmdFile"_*.cmd.done
 
 echo All done
 
