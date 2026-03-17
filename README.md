@@ -106,7 +106,6 @@ Only in testData/exp1: delete.cmd.done
 Only in testData/exp1: readme.txt
 Only in testData/exp1: restore_00.cmd
 Only in testData/exp1: restore.cmd
-Only in testData/exp1: restore.cmd.done
 Only in backupDir/exp1/subdir1/Raw Images: file_1.dat
 Only in backupDir/exp1/subdir1/Raw Images: file_2.dat
 Only in backupDir/exp1/subdir1/Raw Images: file_3.dat
