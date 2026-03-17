@@ -40,9 +40,9 @@ cat "$cmdFile" | xargs -d '\n' -I {} -P 4 sh -c "echo {}; {};"
 [ -f "$cmdFile.done" ] && rm "$cmdFile.done"
 
 restoreCmdFile="${cmdFile/delete.cmd/restore}"
-if ls "$restoreCmdFile"_*.cmd.done; then
-    rm "$restoreCmdFile"_*.cmd.done
-fi
+#if ls "$restoreCmdFile"_*.cmd.done 2>/dev/null; then
+#    rm "$restoreCmdFile"_*.cmd.done
+#fi
 ls "$restoreCmdFile"_*.cmd.done 2>/dev/null && rm "$restoreCmdFile"_*.cmd.done
 
 echo All done
