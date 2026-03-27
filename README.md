@@ -162,3 +162,151 @@ $ restoreAll.sh backupDir/ testData/ sbatch 2>&1 | tee -a restore.log
 ```
 
 Notice: testData and backupDir are folder names. You can use any name for them when working on real data.
+
+
+
+
+
+
+
+
+
+# Trying another way
+Intead of copy the data and delete the 'Raw Images/*.dat' files, 
+we coulc copy the non-'Raw Images' data to a new folder and let lab work with the new folder. 
+
+
+## Start an interactive job, create a working directory and go to it: 
+```bash
+$ srun -p short -t 2:0:0 --mem 2G --pty /bin/bash 
+$ cd $HOME
+$ mkdir -p deleteRestoreTesting 
+$ cd deleteRestoreTesting
+```
+
+## Download the scripts and set up path (only need to do this once): 
+``` bash
+$ cd $HOME
+$ git clone https://github.com/ld32/deleteAndRestore.git
+$ echo "export PATH=$HOME/deleteAndRestore:\$PATH" >> ~/.bashrc  
+$ export PATH="$HOME/deleteAndRestore:$PATH"
+```
+
+## Create testing data: 
+```bash
+$ createTestData.sh exp1 1 1
+$ createTestData.sh exp2 1 1
+
+```
+
+## Take a look at the folder structure
+```bash
+
+# We only delete .dat files under Raw Images, and keep all other files
+$ tree testData/ 
+testData/
+├── exp1
+│   └── subdir1
+│       ├── file_1.dat
+│       ├── file_1.log
+│       ├── file_1.txt
+│       ├── Raw Images
+│       │   ├── file_1.dat
+│       │   ├── file_1.log
+│       │   ├── file_1.txt
+│       │   ├── file_2.dat
+│       │   ├── file_3.dat
+│       │   ├── file_4.dat
+│       │   └── file_5.dat
+│       └── subsubdir_1
+│           ├── file_1.dat
+│           ├── file_1.log
+│           └── file_1.txt
+└── exp2
+    └── subdir1
+        ├── file_1.dat
+        ├── file_1.log
+        ├── file_1.txt
+        ├── Raw Images
+        │   ├── file_1.dat
+        │   ├── file_1.log
+        │   ├── file_1.txt
+        │   ├── file_2.dat
+        │   ├── file_3.dat
+        │   ├── file_4.dat
+        │   └── file_5.dat
+        └── subsubdir_1
+            ├── file_1.dat
+            ├── file_1.log
+            └── file_1.txt
+
+8 directories, 26 files
+```
+
+## For help: 
+```bash
+$ createTestData.sh 
+```
+
+## Create a new folder and copy the non-'Raw Images' to the folder: 
+``` bash
+$ rsync -a --exclude 'Raw Images/*.dat' testData/ testData.noRawImage
+
+# See the new folder:
+$ tree testData.noRawImage
+testData.noRawImage/
+├── exp1
+│   └── subdir1
+│       ├── file_1.dat
+│       ├── file_1.log
+│       ├── file_1.txt
+│       ├── Raw Images
+│       │   ├── file_1.log
+│       │   └── file_1.txt
+│       └── subsubdir_1
+│           ├── file_1.dat
+│           ├── file_1.log
+│           └── file_1.txt
+└── exp2
+    └── subdir1
+        ├── file_1.dat
+        ├── file_1.log
+        ├── file_1.txt
+        ├── Raw Images
+        │   ├── file_1.log
+        │   └── file_1.txt
+        └── subsubdir_1
+            ├── file_1.dat
+            ├── file_1.log
+            └── file_1.txt
+
+8 directories, 16 files
+
+```
+
+## Add or modify files in the new folder
+``` bash
+$ echo new file content > testData.noRawImage/someNewFile
+
+$ echo some thing changed here >> testData.noRawImage/exp1/subdir1/file_1.txt
+```
+## Restore the 'Raw Images/*.dat files
+``` bash
+rsync -a --ignore-existing testData/ testData.noRawImage
+```
+
+## See the difference
+``` bash
+$ diff -r testData testData.noRawImage/
+diff -r testData/exp1/subdir1/file_1.txt testData.noRawImage/exp1/subdir1/file_1.txt
+1a2
+> some thing changed here
+Only in testData.noRawImage/: someNewFile
+```
+
+## Note: allway have ending / with the source directory if you want to copy the content of the folder, not the folder itself. 
+
+
+
+
+ 
