@@ -169,8 +169,6 @@ Notice: testData and backupDir are folder names. You can use any name for them w
 
 
 
-
-
 # Trying another way
 Intead of copy the data and delete the 'Raw Images/*.dat' files, 
 we coulc copy the non-'Raw Images' data to a new folder and let lab work with the new folder. 
@@ -292,7 +290,7 @@ $ echo some thing changed here >> testData.noRawImage/exp1/subdir1/file_1.txt
 ```
 ## Restore the 'Raw Images/*.dat files
 ``` bash
-rsync -a --ignore-existing testData/ testData.noRawImage
+$ rsync -a --ignore-existing testData/ testData.noRawImage
 ```
 
 ## See the difference
