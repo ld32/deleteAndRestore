@@ -1,11 +1,7 @@
 
 # Delete and Restore .dat files
 
-
-
-## Links
-
-### Delete and Restore
+## Delete and Restore
 - [Delete and Restore .dat files](#delete-and-restore-dat-files)
 - [Start an interactive job, create a working directory and go to it](#start-an-interactive-job-create-a-working-directory-and-go-to-it)
 - [Download the scripts and set up path (only need to do this once)](#download-the-scripts-and-set-up-path-only-need-to-do-this-once)
@@ -22,13 +18,16 @@
 - [Check the difference between testData and backupDir (after restore)](#check-the-difference-between-testdata-and-backupdir)
 - [Working with real data](#working-with-real-data)
 
-### Trying another way
+## Trying another way
 - [Trying another way](#trying-another-way)
 - [Create a new folder and copy the non-'Raw Images' to the folder](#create-a-new-folder-and-copy-the-non-raw-images-to-the-folder)
 - [Add or modify files in the new folder](#add-or-modify-files-in-the-new-folder)
 - [Restore the 'Raw Images/*.dat files](#restore-the-raw-imagesdat-files)
 - [See the difference](#see-the-difference)
 - [Note: allway have ending / with the source directory if you want to copy the content of the folder, not the folder itself.](#note-allway-have-ending--with-the-source-directory-if-you-want-to-copy-the-content-of-the-folder-not-the-folder-itself)
+
+
+-----------------------------
 
 
 ## Start an interactive job, create a working directory and go to it: 
